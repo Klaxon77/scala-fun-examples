@@ -11,20 +11,20 @@ object TextProcessing {
   def main(args: Array[String]) = {
     val lines = Source.fromFile("src/resources/sherlock.txt").getLines()
 
-    val words = map(lines)
-    val mapWords = reduce(words)
+    val words = wordsFrom(lines)
+    val wordMap = wordCountMap(words)
     
-    println(mapWords.toList.sortBy(_._2).reverse.mkString("\n"))
-    println(mapWords.foldLeft(0)((sum, count) => sum + count._2))
+    println(wordMap.toList.sortBy(_._2).reverse.mkString("\n"))
+    println(wordMap.foldLeft(0)((sum, count) => sum + count._2))
   }
 
-  def map(lines: Iterator[String]): Iterator[String] = {
+  def wordsFrom(lines: Iterator[String]): Iterator[String] = {
     val words = lines.flatMap(_.split("""\W++"""))
     val filteredWords = words.filter(_.length > 0)
     filteredWords.map(_.toLowerCase)
   }
 
-  def reduce(words: Iterator[String]): Map[String, Int] = {
+  def wordCountMap(words: Iterator[String]): Map[String, Int] = {
     val map = Map[String,Int]()
     words.foldLeft(map)((m, word) => m + (word -> m.getOrElse(word, 0).+(1)))
   }
