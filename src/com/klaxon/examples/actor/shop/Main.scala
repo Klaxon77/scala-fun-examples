@@ -41,7 +41,7 @@ object Main {
     println("[!] " + shortCount + "customers got haircuts today")
   }
 
-  def createCustomers() = for (i <- 0 until 20) yield new Customer(i)
+  def createCustomers(): Seq[Customer] = for (i <- 0 until 20) yield new Customer(i)
 
 }
 
