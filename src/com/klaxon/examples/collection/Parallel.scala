@@ -1,6 +1,6 @@
 package com.klaxon.examples.collection
 
-import scala.collection.{GenTraversable, GenSeq}
+import scala.collection.GenTraversable
 
 /**
  * <p>date 2/9/14 </p>
