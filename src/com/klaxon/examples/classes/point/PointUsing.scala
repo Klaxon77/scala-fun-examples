@@ -11,11 +11,14 @@ object PointUsing {
     val point = SPoint(1, 2)
     println(point)
 
-    val clonedPoint = new SPoint(1, 2)
-    println("Are point equal - " + (clonedPoint == point))
+    val otherPoint = new SPoint(1, 2)
+    println("Are point equal - " + (otherPoint == point))
 
     println("Hashcode - " + point.##)
-    println("Does have same hashcode - " + (clonedPoint.## == point.##))
+    println("Does have same hashcode - " + (otherPoint.## == point.##))
+    
+    val SPoint(x, y) = point
+    println(f"This is result of extractor. x - $x, y - $y")
   }
 
 }
